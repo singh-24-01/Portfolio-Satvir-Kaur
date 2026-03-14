@@ -1,93 +1,141 @@
 /* =========================================================
-   NAVBAR — active link + scrolled shadow
+   AOS INIT
    ========================================================= */
-const navbar  = document.getElementById('navbar');
-const sections = document.querySelectorAll('.section');
-const navLinks = document.querySelectorAll('.nav-link');
-
-function updateNav() {
-  const scrollY = window.scrollY;
-
-  // scrolled class
-  navbar.classList.toggle('scrolled', scrollY > 20);
-
-  // active link based on current section in viewport
-  let current = '';
-  sections.forEach(sec => {
-    const top    = sec.offsetTop - 100;
-    const bottom = top + sec.offsetHeight;
-    if (scrollY >= top && scrollY < bottom) {
-      current = sec.id;
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.toggle('active', link.dataset.section === current);
-  });
-}
-
-window.addEventListener('scroll', updateNav, { passive: true });
-updateNav();
+AOS.init({
+  duration: 750,
+  easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  once: true,
+  offset: 70,
+});
 
 /* =========================================================
-   SMOOTH SCROLL — anchor links
+   NAVBAR — scroll shadow + active link
    ========================================================= */
-document.querySelectorAll('a[href^="#"], .scroll-to').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Active nav link via IntersectionObserver
+const allSections = document.querySelectorAll('section[id]');
+const navLinks    = document.querySelectorAll('.nav-lnk');
+
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(lnk => {
+        lnk.classList.toggle(
+          'active-lnk',
+          lnk.getAttribute('href') === '#' + e.target.id
+        );
+      });
+    }
+  });
+}, { threshold: 0.35 });
+
+allSections.forEach(s => sectionObserver.observe(s));
+
+/* =========================================================
+   SMOOTH SCROLL
+   ========================================================= */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
-
-    // Close mobile menu if open
-    navLinksEl.classList.remove('open');
-
+    // close mobile menu if open
+    mobileMenu.classList.add('hidden');
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
 /* =========================================================
-   MOBILE BURGER MENU
+   MOBILE BURGER
    ========================================================= */
-const burger      = document.getElementById('burger');
-const navLinksEl  = document.querySelector('.nav-links');
+const burger     = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobile-menu');
 
 burger.addEventListener('click', () => {
-  const isOpen = navLinksEl.classList.toggle('open');
-  burger.setAttribute('aria-expanded', isOpen);
-});
-
-// Close on nav-link click
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navLinksEl.classList.remove('open');
-  });
+  mobileMenu.classList.toggle('hidden');
 });
 
 /* =========================================================
-   INTERSECTION OBSERVER — fade-in on scroll
+   CUSTOM CURSOR
    ========================================================= */
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // animate once
+const ring = document.getElementById('cur-ring');
+const dot  = document.getElementById('cur-dot');
+
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX;
+  my = e.clientY;
+  dot.style.left = mx + 'px';
+  dot.style.top  = my + 'px';
+});
+
+(function animRing() {
+  rx += (mx - rx) * 0.11;
+  ry += (my - ry) * 0.11;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animRing);
+})();
+
+document.querySelectorAll('a, button, .glass-card, .sbadge, .ach-badge, .cta-btn').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+});
+
+/* =========================================================
+   STAT COUNTER ANIMATION
+   ========================================================= */
+const counters  = document.querySelectorAll('.stat-num');
+let hasCounted  = false;
+
+function runCounters() {
+  counters.forEach(el => {
+    const target   = +el.dataset.target;
+    const duration = 1800;
+    const isLarge  = target >= 1000;
+    const step     = target / (duration / 16);
+    let current    = 0;
+
+    const tick = () => {
+      current += step;
+      if (current < target) {
+        el.textContent = isLarge
+          ? Math.floor(current).toLocaleString('fr-FR')
+          : Math.floor(current);
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = isLarge
+          ? target.toLocaleString('fr-FR')
+          : target;
       }
-    });
-  },
-  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-);
+    };
+    tick();
+  });
+}
 
-document.querySelectorAll('.fade-in').forEach((el, i) => {
-  // Stagger children within the same parent
-  el.style.transitionDelay = `${(i % 4) * 0.12}s`;
-  observer.observe(el);
-});
+const heroObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !hasCounted) {
+    hasCounted = true;
+    // slight delay so hero animations settle
+    setTimeout(runCounters, 1350);
+  }
+}, { threshold: 0.4 });
+
+const heroEl = document.getElementById('hero');
+if (heroEl) heroObs.observe(heroEl);
 
 /* =========================================================
-   HERO — instant visibility (above the fold)
+   CV DOWNLOAD PLACEHOLDER
    ========================================================= */
-document.querySelectorAll('.hero .fade-in').forEach((el, i) => {
-  el.style.transitionDelay = `${i * 0.18 + 0.25}s`;
-  el.classList.add('visible');
+document.getElementById('cv-btn')?.addEventListener('click', e => {
+  e.preventDefault();
+  alert('Lien vers le CV PDF à configurer.');
 });
