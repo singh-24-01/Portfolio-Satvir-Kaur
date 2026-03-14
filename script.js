@@ -1,40 +1,36 @@
 /* =========================================================
-   AOS INIT
+   AOS
    ========================================================= */
 AOS.init({
-  duration: 750,
+  duration: 700,
   easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
   once: true,
-  offset: 70,
+  offset: 60,
 });
 
 /* =========================================================
-   NAVBAR — scroll shadow + active link
+   NAVBAR — glass au scroll + active link
    ========================================================= */
 const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  navbar.classList.toggle('scrolled', window.scrollY > 55);
 }, { passive: true });
 
-// Active nav link via IntersectionObserver
 const allSections = document.querySelectorAll('section[id]');
 const navLinks    = document.querySelectorAll('.nav-lnk');
 
-const sectionObserver = new IntersectionObserver(entries => {
+const sectionObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       navLinks.forEach(lnk => {
-        lnk.classList.toggle(
-          'active-lnk',
-          lnk.getAttribute('href') === '#' + e.target.id
-        );
+        lnk.classList.toggle('active-lnk', lnk.getAttribute('href') === '#' + e.target.id);
       });
     }
   });
 }, { threshold: 0.35 });
 
-allSections.forEach(s => sectionObserver.observe(s));
+allSections.forEach(s => sectionObs.observe(s));
 
 /* =========================================================
    SMOOTH SCROLL
@@ -46,7 +42,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
-    // close mobile menu if open
     mobileMenu.classList.add('hidden');
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
@@ -63,44 +58,16 @@ burger.addEventListener('click', () => {
 });
 
 /* =========================================================
-   CUSTOM CURSOR
+   STAT COUNTERS
    ========================================================= */
-const ring = document.getElementById('cur-ring');
-const dot  = document.getElementById('cur-dot');
-
-let mx = 0, my = 0, rx = 0, ry = 0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX;
-  my = e.clientY;
-  dot.style.left = mx + 'px';
-  dot.style.top  = my + 'px';
-});
-
-(function animRing() {
-  rx += (mx - rx) * 0.11;
-  ry += (my - ry) * 0.11;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
-  requestAnimationFrame(animRing);
-})();
-
-document.querySelectorAll('a, button, .glass-card, .sbadge, .ach-badge, .cta-btn').forEach(el => {
-  el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
-  el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
-});
-
-/* =========================================================
-   STAT COUNTER ANIMATION
-   ========================================================= */
-const counters  = document.querySelectorAll('.stat-num');
-let hasCounted  = false;
+const counters = document.querySelectorAll('.stat-num');
+let counted    = false;
 
 function runCounters() {
   counters.forEach(el => {
     const target   = +el.dataset.target;
-    const duration = 1800;
     const isLarge  = target >= 1000;
+    const duration = 1800;
     const step     = target / (duration / 16);
     let current    = 0;
 
@@ -112,9 +79,7 @@ function runCounters() {
           : Math.floor(current);
         requestAnimationFrame(tick);
       } else {
-        el.textContent = isLarge
-          ? target.toLocaleString('fr-FR')
-          : target;
+        el.textContent = isLarge ? target.toLocaleString('fr-FR') : target;
       }
     };
     tick();
@@ -122,10 +87,9 @@ function runCounters() {
 }
 
 const heroObs = new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting && !hasCounted) {
-    hasCounted = true;
-    // slight delay so hero animations settle
-    setTimeout(runCounters, 1350);
+  if (entries[0].isIntersecting && !counted) {
+    counted = true;
+    setTimeout(runCounters, 1300);
   }
 }, { threshold: 0.4 });
 
@@ -133,7 +97,7 @@ const heroEl = document.getElementById('hero');
 if (heroEl) heroObs.observe(heroEl);
 
 /* =========================================================
-   CV DOWNLOAD PLACEHOLDER
+   CV DOWNLOAD — placeholder
    ========================================================= */
 document.getElementById('cv-btn')?.addEventListener('click', e => {
   e.preventDefault();

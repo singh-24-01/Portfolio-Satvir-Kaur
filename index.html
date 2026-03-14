@@ -5,30 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Satvir NIRMAL — Asset Manager</title>
 
-  <!-- Fonts -->
+  <!-- Fonts: Inter + Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
   <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-  <!-- Tailwind CDN -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            gold:      '#C9A84C',
-            'gold-lt': '#E8C96A',
-            navy:      '#08091A',
-            'navy-2':  '#0D1229',
-            'navy-3':  '#162040',
-            cream:     '#F5F0E8',
+            gold:      '#B8923A',
+            'gold-lt': '#D4A84B',
+            sand:      '#F5F2EC',
+            'sand-2':  '#EDE9E1',
+            'sand-3':  '#E4DFD5',
+            card:      '#FDFCF9',
+            ink:       '#2C2420',
+            'ink-2':   '#7A6E65',
+            'ink-3':   '#A39890',
           },
           fontFamily: {
             display: ['"Playfair Display"', 'serif'],
-            body:    ['Montserrat', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
           },
         },
       },
@@ -38,11 +41,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="font-body bg-navy text-cream overflow-x-hidden">
-
-  <!-- Custom cursor (desktop) -->
-  <div id="cur-ring" class="cur-ring"></div>
-  <div id="cur-dot"  class="cur-dot"></div>
+<body class="font-body bg-sand text-ink overflow-x-hidden">
 
   <!-- ======================================================
        NAVBAR
@@ -50,7 +49,7 @@
   <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
     <div class="max-w-7xl mx-auto px-6 lg:px-14 h-[68px] flex items-center justify-between">
 
-      <span class="font-display text-gold text-xl font-bold tracking-[.15em]">SN</span>
+      <span class="font-display text-gold text-xl font-bold tracking-[.12em]">SN</span>
 
       <ul class="hidden md:flex items-center gap-10">
         <li><a href="#experiences" class="nav-lnk">Expériences</a></li>
@@ -59,20 +58,18 @@
         <li><a href="#contact"     class="nav-lnk">Contact</a></li>
       </ul>
 
-      <a href="#contact" class="hidden md:inline-flex items-center gap-2 border border-gold/40 text-gold text-[.7rem] tracking-[.15em] uppercase px-5 py-2.5 hover:bg-gold hover:text-navy transition-all duration-300">
+      <a href="#contact" class="hidden md:inline-flex items-center gap-2 border border-gold/50 text-gold text-[.7rem] tracking-[.14em] uppercase px-5 py-2.5 rounded-sm hover:bg-gold hover:text-white transition-all duration-300">
         Disponible
       </a>
 
-      <!-- Mobile burger -->
       <button id="burger" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Menu">
-        <span class="block w-6 h-px bg-cream transition-all duration-300"></span>
-        <span class="block w-6 h-px bg-cream transition-all duration-300"></span>
+        <span class="block w-6 h-px bg-ink transition-all duration-300"></span>
+        <span class="block w-6 h-px bg-ink transition-all duration-300"></span>
         <span class="block w-4 h-px bg-gold  transition-all duration-300"></span>
       </button>
     </div>
 
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-navy-2/95 backdrop-blur-xl border-t border-white/5 px-6 py-6 flex flex-col gap-5">
+    <div id="mobile-menu" class="hidden md:hidden bg-sand/97 backdrop-blur-xl border-t border-sand-3 px-6 py-6 flex flex-col gap-5">
       <a href="#experiences" class="nav-lnk text-sm">Expériences</a>
       <a href="#skills"      class="nav-lnk text-sm">Compétences</a>
       <a href="#education"   class="nav-lnk text-sm">Formation</a>
@@ -84,10 +81,8 @@
   <!-- ======================================================
        HERO
   ====================================================== -->
-  <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
-
-    <!-- Grid + glow decoration -->
-    <div class="hero-grid" aria-hidden="true"></div>
+  <section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-sand">
+    <div class="hero-grid"  aria-hidden="true"></div>
     <div class="hero-glow"  aria-hidden="true"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-14 pt-28 pb-20 w-full">
@@ -118,34 +113,33 @@
                 <span class="stat-num font-display text-4xl text-gold font-bold" data-target="4">0</span>
                 <span class="text-gold text-2xl font-bold">+</span>
               </div>
-              <p class="text-[.65rem] tracking-[.18em] uppercase text-cream/45 mt-1">Postes tenus</p>
+              <p class="text-[.65rem] tracking-[.18em] uppercase text-ink-3 mt-1">Postes tenus</p>
             </div>
-            <div class="w-px h-12 bg-white/10 self-center"></div>
+            <div class="w-px h-12 bg-sand-3 self-center"></div>
             <div>
               <div class="flex items-baseline gap-1">
                 <span class="stat-num font-display text-4xl text-gold font-bold" data-target="15000">0</span>
                 <span class="text-gold text-sm font-bold">m²</span>
               </div>
-              <p class="text-[.65rem] tracking-[.18em] uppercase text-cream/45 mt-1">Bien géré</p>
+              <p class="text-[.65rem] tracking-[.18em] uppercase text-ink-3 mt-1">Bien géré</p>
             </div>
-            <div class="w-px h-12 bg-white/10 self-center"></div>
+            <div class="w-px h-12 bg-sand-3 self-center"></div>
             <div>
               <div class="flex items-baseline gap-1">
                 <span class="stat-num font-display text-4xl text-gold font-bold" data-target="3">0</span>
                 <span class="text-gold text-2xl font-bold">+</span>
               </div>
-              <p class="text-[.65rem] tracking-[.18em] uppercase text-cream/45 mt-1">Années exp.</p>
+              <p class="text-[.65rem] tracking-[.18em] uppercase text-ink-3 mt-1">Années exp.</p>
             </div>
           </div>
 
-          <!-- CTA row -->
           <div class="flex flex-wrap gap-4 mt-12 hero-cta">
             <a href="#experiences" class="cta-btn cta-btn--gold">Voir le parcours</a>
-            <a href="#contact"     class="cta-btn cta-btn--ghost">Me contacter</a>
+            <a href="#contact"     class="cta-btn cta-btn--outline">Me contacter</a>
           </div>
         </div>
 
-        <!-- RIGHT — photo frame -->
+        <!-- RIGHT — photo -->
         <div class="hero-photo-wrap">
           <div class="photo-frame">
             <div class="photo-inner">
@@ -161,7 +155,6 @@
       </div>
     </div>
 
-    <!-- Scroll mouse -->
     <div class="scroll-mouse-wrap" aria-hidden="true">
       <div class="scroll-mouse"></div>
     </div>
@@ -171,25 +164,21 @@
   <!-- ======================================================
        EXPERIENCES
   ====================================================== -->
-  <section id="experiences" class="py-36 relative overflow-hidden">
-    <div class="side-glow" aria-hidden="true"></div>
-
+  <section id="experiences" class="py-36 bg-sand-2 relative">
     <div class="max-w-7xl mx-auto px-6 lg:px-14">
 
-      <!-- Header -->
       <div class="section-header" data-aos="fade-up">
         <span class="section-tag">01 — Parcours</span>
-        <h2 class="section-title">Expériences<br /><em class="text-gold/65">Professionnelles</em></h2>
+        <h2 class="section-title">Expériences<br /><em class="text-gold/80">Professionnelles</em></h2>
         <div class="section-rule"></div>
       </div>
 
-      <!-- Timeline -->
       <div class="timeline">
 
-        <!-- ── EXP 1 ── -->
+        <!-- EXP 1 -->
         <div class="tl-item" data-aos="fade-up" data-aos-delay="80">
           <div class="tl-dot"></div>
-          <article class="glass-card exp-card">
+          <article class="exp-card">
             <div class="exp-head">
               <div class="flex-1 min-w-0">
                 <span class="exp-date">Nov. 2024 — Sept. 2025</span>
@@ -201,30 +190,30 @@
               <div class="exp-logo">FGI</div>
             </div>
             <div class="exp-hr"></div>
-            <p class="exp-summary">Gestion opérationnelle d'un portefeuille commercial multi-actifs en Île-de-France avec coordination complète des parties prenantes.</p>
+            <p class="exp-summary">Gestion opérationnelle d'un portefeuille commercial multi-actifs en Île-de-France, coordination complète des parties prenantes.</p>
             <div class="achievements">
               <span class="ach-label">Key Achievements</span>
               <div class="ach-grid">
-                <div class="ach-badge">Baux commerciaux négociés &amp; gérés</div>
-                <div class="ach-badge">Coordination travaux multi-corps</div>
-                <div class="ach-badge">Suivi états locatifs &amp; reporting</div>
-                <div class="ach-badge">Relations propriétaires &amp; locataires</div>
-                <div class="ach-badge">Gestion locations &amp; visites</div>
+                <div class="ach-chip">Baux commerciaux négociés &amp; gérés</div>
+                <div class="ach-chip">Coordination travaux multi-corps</div>
+                <div class="ach-chip">Suivi états locatifs &amp; reporting</div>
+                <div class="ach-chip">Relations propriétaires &amp; locataires</div>
+                <div class="ach-chip">Gestion locations &amp; visites</div>
               </div>
             </div>
           </article>
         </div>
 
-        <!-- ── EXP 2 ── -->
+        <!-- EXP 2 -->
         <div class="tl-item" data-aos="fade-up" data-aos-delay="130">
           <div class="tl-dot"></div>
-          <article class="glass-card exp-card">
+          <article class="exp-card">
             <div class="exp-head">
               <div class="flex-1 min-w-0">
                 <span class="exp-date">Jan. 2024 — Oct. 2024</span>
                 <h3 class="exp-co">Projet Personnel — Beauvais</h3>
                 <p class="exp-role">Gestionnaire des Acquisitions Immobilières
-                  <span class="contract-badge contract-badge--neutral">Indépendant</span>
+                  <span class="contract-badge contract-badge--soft">Indépendant</span>
                 </p>
               </div>
               <div class="exp-logo">PP</div>
@@ -234,18 +223,18 @@
             <div class="achievements">
               <span class="ach-label">Key Achievements</span>
               <div class="ach-grid">
-                <div class="ach-badge ach-badge--hl"><strong>15 000 m²</strong> — Étude de marché exhaustive</div>
-                <div class="ach-badge">Plans architecturaux optimisés</div>
-                <div class="ach-badge">Analyse multi-scénarios (location, découpe, RSS)</div>
+                <div class="ach-chip ach-chip--hl"><strong>15 000 m²</strong> — Étude de marché exhaustive</div>
+                <div class="ach-chip">Plans architecturaux optimisés</div>
+                <div class="ach-chip">Analyse multi-scénarios (location, découpe, RSS)</div>
               </div>
             </div>
           </article>
         </div>
 
-        <!-- ── EXP 3 ── -->
+        <!-- EXP 3 -->
         <div class="tl-item" data-aos="fade-up" data-aos-delay="180">
           <div class="tl-dot"></div>
-          <article class="glass-card exp-card">
+          <article class="exp-card">
             <div class="exp-head">
               <div class="flex-1 min-w-0">
                 <span class="exp-date">Sept. 2022 — Oct. 2023</span>
@@ -257,29 +246,29 @@
               <div class="exp-logo">ADP</div>
             </div>
             <div class="exp-hr"></div>
-            <p class="exp-summary">Gestion d'actifs immobiliers au sein du premier groupe aéroportuaire européen avec exposition à des problématiques foncières complexes.</p>
+            <p class="exp-summary">Gestion d'actifs immobiliers au sein du premier groupe aéroportuaire européen, exposition à des problématiques foncières complexes.</p>
             <div class="achievements">
               <span class="ach-label">Key Achievements</span>
               <div class="ach-grid">
-                <div class="ach-badge ach-badge--hl">ENAFS — Stratégie foncière aéroportuaire</div>
-                <div class="ach-badge">Développement stratégies immobilières</div>
-                <div class="ach-badge">Animation comités de direction</div>
-                <div class="ach-badge">Gestion baux &amp; relations grands comptes</div>
+                <div class="ach-chip ach-chip--hl">ENAFS — Stratégie foncière aéroportuaire</div>
+                <div class="ach-chip">Développement stratégies immobilières</div>
+                <div class="ach-chip">Animation comités de direction</div>
+                <div class="ach-chip">Gestion baux &amp; relations grands comptes</div>
               </div>
             </div>
           </article>
         </div>
 
-        <!-- ── EXP 4 ── -->
+        <!-- EXP 4 -->
         <div class="tl-item" data-aos="fade-up" data-aos-delay="230">
           <div class="tl-dot"></div>
-          <article class="glass-card exp-card">
+          <article class="exp-card">
             <div class="exp-head">
               <div class="flex-1 min-w-0">
                 <span class="exp-date">Avr. 2022 — Sept. 2022</span>
                 <h3 class="exp-co">Spirit REIM</h3>
                 <p class="exp-role">Gestionnaire d'Actif Immobilier
-                  <span class="contract-badge contract-badge--neutral">Stage</span>
+                  <span class="contract-badge contract-badge--soft">Stage</span>
                 </p>
               </div>
               <div class="exp-logo">SR</div>
@@ -289,101 +278,112 @@
             <div class="achievements">
               <span class="ach-label">Key Achievements</span>
               <div class="ach-grid">
-                <div class="ach-badge ach-badge--hl">Modélisation financière &amp; calcul TRI</div>
-                <div class="ach-badge">Business Plans multi-actifs</div>
-                <div class="ach-badge">Data room &amp; reporting investisseurs</div>
-                <div class="ach-badge">Analyse de marché &amp; valorisation</div>
+                <div class="ach-chip ach-chip--hl">Modélisation financière &amp; calcul TRI</div>
+                <div class="ach-chip">Business Plans multi-actifs</div>
+                <div class="ach-chip">Data room &amp; reporting investisseurs</div>
+                <div class="ach-chip">Analyse de marché &amp; valorisation</div>
               </div>
             </div>
           </article>
         </div>
 
-      </div><!-- /timeline -->
+      </div>
     </div>
   </section>
 
 
   <!-- ======================================================
-       SKILLS
+       SKILLS — EXPERTISE CARDS
   ====================================================== -->
-  <section id="skills" class="py-36 bg-navy-2">
+  <section id="skills" class="py-36 bg-sand">
     <div class="max-w-7xl mx-auto px-6 lg:px-14">
 
       <div class="section-header" data-aos="fade-up">
         <span class="section-tag">02 — Expertise</span>
-        <h2 class="section-title">Hard Skills<br /><em class="text-gold/65">&amp; Toolbox</em></h2>
+        <h2 class="section-title">Hard Skills<br /><em class="text-gold/80">&amp; Toolbox</em></h2>
         <div class="section-rule"></div>
       </div>
 
-      <div class="skills-grid">
+      <!-- 3 Expertise Cards -->
+      <div class="expertise-grid">
 
-        <!-- Expertise Immobilière -->
-        <div class="skill-group" data-aos="fade-up" data-aos-delay="80">
-          <div class="sg-head">
-            <span class="sg-icon">🏢</span>
-            <h3 class="sg-title">Expertise Immobilière</h3>
+        <!-- STRATEGY -->
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="ec-icon-wrap ec-icon--strategy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-6 h-6"><path d="M2 20h.01M7 20v-4M12 20v-8M17 20V8M22 4l-5 5-4-4-8 8"/></svg>
           </div>
-          <div class="badge-cloud">
-            <span class="sbadge sbadge--gold">Valorisation DCF</span>
-            <span class="sbadge sbadge--gold">Capitalisation</span>
-            <span class="sbadge sbadge--gold">Études de marché</span>
-            <span class="sbadge sbadge--gold">Stratégie d'actifs</span>
-            <span class="sbadge sbadge--gold">Business Plans</span>
-            <span class="sbadge sbadge--gold">Modélisation TRI</span>
-            <span class="sbadge sbadge--gold">Baux commerciaux</span>
-            <span class="sbadge sbadge--gold">Data room</span>
-            <span class="sbadge sbadge--gold">Reporting</span>
+          <h3 class="ec-title">Strategy</h3>
+          <p class="ec-sub">Analyse &amp; Valorisation d'Actifs</p>
+          <div class="ec-tags">
+            <span class="ec-tag">Valorisation DCF</span>
+            <span class="ec-tag">Capitalisation</span>
+            <span class="ec-tag">Comparaison de marché</span>
+            <span class="ec-tag">Études de marché</span>
+            <span class="ec-tag">Stratégie d'actifs</span>
+            <span class="ec-tag">Business Plans</span>
+            <span class="ec-tag">Analyse multi-scénarios</span>
           </div>
         </div>
 
-        <!-- Ingénierie & Data -->
-        <div class="skill-group" data-aos="fade-up" data-aos-delay="150">
-          <div class="sg-head">
-            <span class="sg-icon">⚙️</span>
-            <h3 class="sg-title">Ingénierie &amp; Data</h3>
+        <!-- FINANCIAL ENGINEERING -->
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="ec-icon-wrap ec-icon--finance">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-6 h-6"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h2m2 0h2m2 0h2M7 12h4"/></svg>
           </div>
-          <div class="badge-cloud">
-            <span class="sbadge sbadge--blue">Python</span>
-            <span class="sbadge sbadge--blue">Excel VBA</span>
-            <span class="sbadge sbadge--blue">Excel Avancé</span>
-            <span class="sbadge sbadge--blue">PowerPoint</span>
-            <span class="sbadge sbadge--blue">Word</span>
-            <span class="sbadge sbadge--blue">Canva</span>
-          </div>
-        </div>
-
-        <!-- Soft Skills -->
-        <div class="skill-group" data-aos="fade-up" data-aos-delay="220">
-          <div class="sg-head">
-            <span class="sg-icon">🤝</span>
-            <h3 class="sg-title">Soft Skills</h3>
-          </div>
-          <div class="badge-cloud">
-            <span class="sbadge sbadge--neutral">Négociation baux</span>
-            <span class="sbadge sbadge--neutral">Coordination travaux</span>
-            <span class="sbadge sbadge--neutral">Autonomie</span>
-            <span class="sbadge sbadge--neutral">Organisation</span>
-            <span class="sbadge sbadge--neutral">Esprit d'équipe</span>
-            <span class="sbadge sbadge--neutral">Adaptation</span>
+          <h3 class="ec-title">Financial Engineering</h3>
+          <p class="ec-sub">Modélisation &amp; Outils Data</p>
+          <div class="ec-tags">
+            <span class="ec-tag ec-tag--blue">Python</span>
+            <span class="ec-tag ec-tag--blue">Excel VBA</span>
+            <span class="ec-tag ec-tag--blue">Excel Avancé</span>
+            <span class="ec-tag ec-tag--blue">Modélisation TRI</span>
+            <span class="ec-tag ec-tag--blue">Data room</span>
+            <span class="ec-tag ec-tag--blue">Reporting</span>
+            <span class="ec-tag ec-tag--blue">PowerPoint</span>
+            <span class="ec-tag ec-tag--blue">Canva</span>
           </div>
         </div>
 
-        <!-- Langues -->
-        <div class="skill-group" data-aos="fade-up" data-aos-delay="290">
-          <div class="sg-head">
-            <span class="sg-icon">🌍</span>
-            <h3 class="sg-title">Langues</h3>
+        <!-- OPERATIONS -->
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="240">
+          <div class="ec-icon-wrap ec-icon--ops">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-6 h-6"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
-          <div class="lang-list">
-            <div class="lang-row"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="llvl llvl--native">Natif</span></div>
-            <div class="lang-row"><span class="lang-flag">🇬🇧</span><span class="lang-name">Anglais</span><span class="llvl llvl--pro">Professionnel</span></div>
-            <div class="lang-row"><span class="lang-flag">🇩🇪</span><span class="lang-name">Allemand</span><span class="llvl llvl--inter">Intermédiaire</span></div>
-            <div class="lang-row"><span class="lang-flag">🇮🇳</span><span class="lang-name">Punjabi</span><span class="llvl llvl--native">Natif</span></div>
-            <div class="lang-row"><span class="lang-flag">🇮🇳</span><span class="lang-name">Hindi / Urdu</span><span class="llvl llvl--pro">Courant</span></div>
+          <h3 class="ec-title">Operations</h3>
+          <p class="ec-sub">Gestion Locative &amp; Pilotage</p>
+          <div class="ec-tags">
+            <span class="ec-tag ec-tag--sage">Baux commerciaux</span>
+            <span class="ec-tag ec-tag--sage">Négociation baux</span>
+            <span class="ec-tag ec-tag--sage">Coordination travaux</span>
+            <span class="ec-tag ec-tag--sage">États locatifs</span>
+            <span class="ec-tag ec-tag--sage">Relations propriétaires</span>
+            <span class="ec-tag ec-tag--sage">Suivi locatif</span>
+            <span class="ec-tag ec-tag--sage">Organisation &amp; rigueur</span>
           </div>
         </div>
 
-      </div><!-- /skills-grid -->
+      </div>
+
+      <!-- Languages card -->
+      <div class="lang-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="lang-card-header">
+          <div class="ec-icon-wrap ec-icon--lang">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-6 h-6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          </div>
+          <div>
+            <h3 class="ec-title">Langues</h3>
+            <p class="ec-sub">Multilinguisme &amp; Communication</p>
+          </div>
+        </div>
+        <div class="lang-chips">
+          <div class="lang-chip"><span class="lc-flag">🇫🇷</span><span class="lc-name">Français</span><span class="lc-lvl lc-lvl--native">Natif</span></div>
+          <div class="lang-chip"><span class="lc-flag">🇬🇧</span><span class="lc-name">Anglais</span><span class="lc-lvl lc-lvl--pro">Professionnel</span></div>
+          <div class="lang-chip"><span class="lc-flag">🇩🇪</span><span class="lc-name">Allemand</span><span class="lc-lvl lc-lvl--inter">Intermédiaire</span></div>
+          <div class="lang-chip"><span class="lc-flag">🇮🇳</span><span class="lc-name">Punjabi</span><span class="lc-lvl lc-lvl--native">Natif</span></div>
+          <div class="lang-chip"><span class="lc-flag">🇮🇳</span><span class="lc-name">Hindi / Urdu</span><span class="lc-lvl lc-lvl--pro">Courant</span></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -391,12 +391,12 @@
   <!-- ======================================================
        EDUCATION
   ====================================================== -->
-  <section id="education" class="py-36">
+  <section id="education" class="py-36 bg-sand-2">
     <div class="max-w-7xl mx-auto px-6 lg:px-14">
 
       <div class="section-header" data-aos="fade-up">
         <span class="section-tag">03 — Formation</span>
-        <h2 class="section-title">Parcours<br /><em class="text-gold/65">Académique</em></h2>
+        <h2 class="section-title">Parcours<br /><em class="text-gold/80">Académique</em></h2>
         <div class="section-rule"></div>
       </div>
 
@@ -405,8 +405,8 @@
         <div class="edu-row" data-aos="fade-up" data-aos-delay="80">
           <div class="edu-year-col"><span class="edu-year">2023</span></div>
           <div class="edu-connector"><div class="edu-dot"></div><div class="edu-vline"></div></div>
-          <div class="glass-card edu-card">
-            <div class="edu-logo upec-color">UPEC</div>
+          <div class="edu-card">
+            <div class="edu-logo upec-c">UPEC</div>
             <div><h3 class="edu-degree">Master 2 — Ingénierie Immobilière</h3><p class="edu-school">Université Paris Est Créteil</p></div>
           </div>
         </div>
@@ -414,8 +414,8 @@
         <div class="edu-row" data-aos="fade-up" data-aos-delay="130">
           <div class="edu-year-col"><span class="edu-year">2022</span></div>
           <div class="edu-connector"><div class="edu-dot"></div><div class="edu-vline"></div></div>
-          <div class="glass-card edu-card">
-            <div class="edu-logo upec-color">UPEC</div>
+          <div class="edu-card">
+            <div class="edu-logo upec-c">UPEC</div>
             <div><h3 class="edu-degree">Master 1 — Banque Finance Assurance</h3><p class="edu-school">UPEC — Parcours Ingénierie Immobilière</p></div>
           </div>
         </div>
@@ -423,8 +423,8 @@
         <div class="edu-row" data-aos="fade-up" data-aos-delay="180">
           <div class="edu-year-col"><span class="edu-year">2021</span></div>
           <div class="edu-connector"><div class="edu-dot"></div><div class="edu-vline"></div></div>
-          <div class="glass-card edu-card">
-            <div class="edu-logo sorb-color">SPC</div>
+          <div class="edu-card">
+            <div class="edu-logo sorb-c">SPC</div>
             <div><h3 class="edu-degree">Licence — Droit, Économie &amp; Gestion</h3><p class="edu-school">Université Sorbonne Paris Cité — Mention Gestion</p></div>
           </div>
         </div>
@@ -432,9 +432,9 @@
         <div class="edu-row" data-aos="fade-up" data-aos-delay="230">
           <div class="edu-year-col"><span class="edu-year">2018</span></div>
           <div class="edu-connector"><div class="edu-dot"></div></div>
-          <div class="glass-card edu-card">
-            <div class="edu-logo bac-color">BAC</div>
-            <div><h3 class="edu-degree">Baccalauréat Économique &amp; Social</h3><p class="edu-school">Lycée Georges Clémenceau — Spécialité Maths</p></div>
+          <div class="edu-card">
+            <div class="edu-logo bac-c">BAC</div>
+            <div><h3 class="edu-degree">Baccalauréat Économique &amp; Social</h3><p class="edu-school">Lycée Georges Clémenceau — Spécialité Mathématiques</p></div>
           </div>
         </div>
 
@@ -442,7 +442,7 @@
 
       <!-- Loisirs -->
       <div class="mt-24" data-aos="fade-up">
-        <p class="text-[.65rem] tracking-[.3em] uppercase text-gold mb-5">Centres d'intérêt</p>
+        <p class="text-[.65rem] tracking-[.28em] uppercase text-gold mb-5 font-semibold">Centres d'intérêt</p>
         <div class="flex flex-wrap gap-3">
           <span class="hobby-chip">🎾 Tennis</span>
           <span class="hobby-chip">🥋 Arts Martiaux</span>
@@ -458,23 +458,22 @@
   <!-- ======================================================
        CONTACT
   ====================================================== -->
-  <section id="contact" class="py-36 relative overflow-hidden">
+  <section id="contact" class="py-36 bg-sand relative overflow-hidden">
     <div class="contact-glow" aria-hidden="true"></div>
 
     <div class="max-w-4xl mx-auto px-6 lg:px-14 text-center relative z-10">
 
       <div data-aos="fade-up">
-        <span class="section-tag justify-center flex">04 — Contact</span>
-        <h2 class="font-display font-bold text-5xl lg:text-7xl text-cream mt-4 mb-6 leading-tight">
+        <span class="section-tag flex justify-center">04 — Contact</span>
+        <h2 class="font-display font-bold text-5xl lg:text-7xl text-ink mt-4 mb-6 leading-tight">
           Travaillons<br /><em class="text-gold">ensemble.</em>
         </h2>
-        <p class="text-cream/55 text-[.9rem] max-w-xl mx-auto mb-14 leading-relaxed">
+        <p class="text-ink-2 text-[.9rem] max-w-xl mx-auto mb-14 leading-relaxed">
           Disponible pour des opportunités en Asset Management, gestion de
           portefeuilles immobiliers ou conseil en stratégie d'actifs.
         </p>
       </div>
 
-      <!-- CTA buttons -->
       <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center mb-16" data-aos="fade-up" data-aos-delay="100">
 
         <a href="mailto:satvir.nirmal@gmail.com" class="cta-btn cta-btn--gold">
@@ -482,7 +481,7 @@
           Envoyer un Email
         </a>
 
-        <a href="https://linkedin.com/in/satvirnirmal" target="_blank" rel="noopener" class="cta-btn cta-btn--ghost">
+        <a href="https://linkedin.com/in/satvirnirmal" target="_blank" rel="noopener" class="cta-btn cta-btn--dark">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-5a2 2 0 110 4 2 2 0 010-4z"/></svg>
           LinkedIn
         </a>
@@ -494,8 +493,7 @@
 
       </div>
 
-      <!-- Info strip -->
-      <div class="flex flex-wrap justify-center gap-8 text-cream/35 text-[.7rem] tracking-widest uppercase" data-aos="fade-up" data-aos-delay="200">
+      <div class="flex flex-wrap justify-center gap-8 text-ink-3 text-[.7rem] tracking-widest uppercase" data-aos="fade-up" data-aos-delay="200">
         <span>📞 07 81 89 22 00</span>
         <span>📍 Drancy — Île-de-France</span>
         <span>🚗 Permis B</span>
@@ -508,13 +506,13 @@
   <!-- ======================================================
        FOOTER
   ====================================================== -->
-  <footer class="py-8 border-t border-white/5">
+  <footer class="py-8 border-t border-sand-3">
     <div class="max-w-7xl mx-auto px-6 lg:px-14 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <span class="font-display text-gold text-xl font-bold tracking-[.15em]">SN</span>
-      <p class="text-cream/25 text-[.7rem] tracking-wider">© 2025 Satvir NIRMAL — Asset Manager</p>
+      <span class="font-display text-gold text-xl font-bold tracking-[.12em]">SN</span>
+      <p class="text-ink-3 text-[.7rem] tracking-wider">© 2025 Satvir NIRMAL — Asset Manager</p>
       <div class="flex gap-6">
-        <a href="mailto:satvir.nirmal@gmail.com" class="text-cream/25 hover:text-gold text-[.7rem] tracking-wider transition-colors duration-300">Email</a>
-        <a href="https://linkedin.com/in/satvirnirmal" target="_blank" rel="noopener" class="text-cream/25 hover:text-gold text-[.7rem] tracking-wider transition-colors duration-300">LinkedIn</a>
+        <a href="mailto:satvir.nirmal@gmail.com" class="text-ink-3 hover:text-gold text-[.7rem] tracking-wider transition-colors duration-300">Email</a>
+        <a href="https://linkedin.com/in/satvirnirmal" target="_blank" rel="noopener" class="text-ink-3 hover:text-gold text-[.7rem] tracking-wider transition-colors duration-300">LinkedIn</a>
       </div>
     </div>
   </footer>
